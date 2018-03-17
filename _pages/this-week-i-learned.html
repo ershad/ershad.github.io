@@ -1,0 +1,12 @@
+---
+layout: archive
+permalink: /this-week-i-learned/
+title: "This Week I Learned"
+author_profile: true
+---
+
+{% assign posts = site.categories["This Week I Learned"] %}
+<h2 id="{{ category | slugify }}" class="archive__subtitle">{{ category }}</h2>
+{% for post in posts %}
+  {% include archive-single.html %}
+{% endfor %}
