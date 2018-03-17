@@ -1,0 +1,52 @@
+---
+layout: single
+title: 'GSoC 2013: Updates on Grandham project'
+date: 2013-07-14 13:09:26.000000000 +05:30
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Grandham
+- GSoC 2013
+- Ruby on Rails
+- Software
+tags:
+- development
+- free software
+- gsoc
+- gsoc2013
+- Programming
+- RubyonRails
+- smc
+- Source Code
+meta:
+  _edit_last: '1'
+
+---
+<p>A couple of weeks before, We (Anivar, Manoj and me) had a meetup with Sri K. H. Hussain who is a pioneer in library science. He has worked in many projects including earlier version of Grandham (Malayalagrandham.com) and has been a member of its task force. He offered guidance for development and his inspiring vision for this project helped us to fix the goals.</p>
+<p><em>(The trip for the meetup was fun. Though it was for Google 'Summer' of Code, we got drenched in the heavy monsoon of Kerala ;))</em></p>
+<p><span style="line-height: 1.714285714; font-size: 1rem;">Meanwhile the coding period for GSoC had started, It was time to fasten the development process and get the project up as fast as possible. I had drawn few design mockups and have started implementing them.</span></p>
+<p><a href="http://ershadk.com/blog/wp-content/uploads/2013/07/2.-Single-book.png"><img class="size-thumbnail wp-image-672 alignleft" alt="2. Single book" src="{{ site.baseurl }}/assets/2.-Single-book-150x150.png" width="150" height="150" /></a> <a href="http://ershadk.com/blog/wp-content/uploads/2013/07/3.-Add-new-book-Basic-fields.png"><img class="size-thumbnail wp-image-673 alignleft" alt="3. Add new book (Basic fields)" src="{{ site.baseurl }}/assets/3.-Add-new-book-Basic-fields-150x150.png" width="150" height="150" /></a> <a href="http://ershadk.com/blog/wp-content/uploads/2013/07/4.-Sign-Up.png"><img class="size-thumbnail wp-image-674 alignleft" alt="4. Sign Up" src="{{ site.baseurl }}/assets/4.-Sign-Up-150x150.png" width="150" height="150" /></a> <a href="http://ershadk.com/blog/wp-content/uploads/2013/07/5.-Sign-In.png"><img class="size-thumbnail wp-image-675 alignleft" alt="5. Sign In" src="{{ site.baseurl }}/assets/5.-Sign-In-150x150.png" width="150" height="150" /></a> <a href="http://ershadk.com/blog/wp-content/uploads/2013/07/6.-Task-force-moderation.png"><img class="size-thumbnail wp-image-676 alignleft" alt="6. Task force moderation" src="{{ site.baseurl }}/assets/6.-Task-force-moderation-150x150.png" width="150" height="150" /></a> <a href="http://ershadk.com/blog/wp-content/uploads/2013/07/1.-Home.png"><img class="alignleft size-thumbnail wp-image-671" alt="1. Home" src="{{ site.baseurl }}/assets/1.-Home-150x150.png" width="150" height="150" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Most of these designs are just helpers to assist in development to get the backend and features done. We will do proper styling and UX enhancements after implementing the backend.</p>
+<p>Currently the application has the following features,</p>
+<ul>
+<li><span style="line-height: 14px;">Basic books listing and API</span></li>
+<li>Bootswatch integration</li>
+<li>Dynamic URLs in Navbar according to the language selected</li>
+<li>Add book form</li>
+<li>Edit book (which would save the data as as a new revision)</li>
+<li>Decent test coverage</li>
+</ul>
+<p>Live instance of the application in development is running here - <a href="http://grandham.herokuapp.com">grandham.herokuapp.com</a></p>
+<p>Regarding the representation of binary MARC21 data in relational database, we had decided to convert it to MARCXML and then it shouldn't be a problem to store. It needs a bit more research on how many attributes and data fields it would take to completely express MARC data, hoping to write a separate post on that later.</p>
+<p>That's all for now. Happy hacking, folks!</p>

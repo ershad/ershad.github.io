@@ -1,0 +1,30 @@
+---
+layout: single
+title: Python script for automatic synchronisation of 'Read it later' list and webpage
+date: 2011-11-16 14:58:28.000000000 +05:30
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Experiments
+- python
+tags:
+- Experiments
+- hack
+- python
+- Source Code
+meta:
+  dsq_thread_id: '516307074'
+  _edit_last: '1'
+  s2mail: 'yes'
+
+---
+<p>[caption id="attachment_461" align="alignright" width="229" caption="Adding to &#39;Read it later&#39; list"]<a href="http://ershadk.com/blog/wp-content/uploads/2011/11/Screenshot.png"><img class="size-full wp-image-461 " title="Read it later" src="{{ site.baseurl }}/assets/Screenshot.png" alt="" width="229" height="66" /></a>[/caption]</p>
+<p>One of the powerful features of firefox is that it has thousands of useful addons. We are going to deal with such an addon - <a href="http://readitlaterlist.com/" target="_blank">Read it later</a>. It allows us to book mark page to read later with just a click. I was happy living with it.</p>
+<p>But on one fine day, <a href="http://2x3idiots.blogspot.com/" target="_blank">Hrishiettan</a> told me about sharing the links we read and its advantages. Sharing links will help many people to find interesting articles easily and it will also act as a link-index in case if we want to refer it again. The idea is really good and he told he would start working on a php app.</p>
+<p>On another day, I told about this to <a href="http://raghesh.wordpress.com/" target="_blank">Raghesh sir</a>. He told there's an option to export our list to html in 'Read it later'. That's it! They have an API too! Got the API key from their website, cleared all existing links as they contain irrelevant news links, and wrote following script. It now updates the links in <a href="http://ershadk.com/links/" target="_blank">http://ershadk.com/links/</a> every 5 minutes automatically from my 'Read it later' list.  Thank you :)</p>
+<p>ps: The standard way of xml parsing didn't work, that's why I wrote it rude :)</p>
+<p><script type="text/javascript" src="http://gist-it.appspot.com/github/ershad/Snippets/raw/master/readsync.py"></script></p>
+<p>&nbsp;</p>

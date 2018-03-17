@@ -1,0 +1,32 @@
+---
+layout: single
+title: 'GSoC 2013: Week 2 of Grandham project'
+date: 2013-07-14 22:11:41.000000000 +05:30
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- GSoC 2013
+- Ruby on Rails
+- Software
+tags:
+- development
+- grandham
+- Programming
+- RubyonRails
+- smc
+- Source Code
+meta:
+  _edit_last: '1'
+  _wp_old_slug: gsoc-2013-week-2-of-grandham-project
+
+---
+<p>Week 2 of Grandham was filled with more architecture decisions and implementations.</p>
+<p><strong>Solving the versioning problem</strong></p>
+<p>It's quite essential to store different user contributions on the same subject separately if the application supports crowdsourcing. We cannot let the user to overwrite the existing data without any moderation. Hence in Grandham, we have a 'Book' model with many 'Submissions' out of which one will be an approved submission. A book's individual page basically has the detail from this approved submission.</p>
+<p style="text-align: center;"><a href="http://ershadk.com/blog/wp-content/uploads/2013/07/Book-has-many-submissions.png"><img class="aligncenter  wp-image-698" alt="Book has many submissions" src="{{ site.baseurl }}/assets/Book-has-many-submissions.png" width="712" height="328" /></a></p>
+<p style="text-align: left;">It will be task force (a set of users with advanced privileges) who would approve submissions. They will have options to comment or even edit a submission.</p>
+<p style="text-align: left;"><strong>Miscellaneous</strong></p>
+<p style="text-align: left;">Thanks to <a href="http://travis-ci.org/smc/grandham">Travis CI</a>, Grandham project now has a <a href="https://en.wikipedia.org/wiki/Continuous_integration">Continuous Integration</a> server. We also use <a href="https://gemnasium.com/smc/grandham">Gemnasium</a> to track dependency packages.</p>

@@ -1,0 +1,88 @@
+---
+layout: single
+title: The pleasure of solving!
+date: 2009-12-14 12:01:13.000000000 +05:30
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Experiments
+tags:
+- C++
+- computer
+- Experiments
+- Programming
+- Source Code
+meta:
+  _edit_last: '1'
+  dsq_thread_id: '516308795'
+
+---
+<p>It's been a quite long since I blogged something :) May be a writer's block* (*acronym for pure laziness,here);) Well, Last Saturday, I went to dxmk9 program conducted by NSS collage of engineering at Kottamaidhanam, Palakkad. I had registered my name for 'Geek's Paradise' competition which is basically a C programming contest. The first task was to answer some objective questions, mainly to predict the output, was not much tough. The second task was to print a number pattern like this:</p>
+<p>1<br />
+1 2 1<br />
+1 2 3 2 1<br />
+1 2 3 4 3 2 1<br />
+1 2 3 2 1<br />
+1 2 1<br />
+1</p>
+<p>whooo! the problem was not easy for a newbie like me ('m still in school,sir ;) ), I simply wrote some printf() statements with some ++i,etc. and escaped! Also, I had no much time to think, I had promised to return home before 1 PM.</p>
+<p>When I reached home, a sudden thought flashed across my mind "Why shouldn't I give a try ?". I booted my ubuntu system ( 'm eagerly waiting to get Fedora in hands), took newly installed Netbeans IDE and started trying. After some time -  LOL :) !! It worked!! The program asked for an integer input and printed the pattern exactly the way it's meant to be! I know, this is a small problem and has nothing of great speciality or something, but don't know why - The output gave me some moments of rejoice! A small pleasure of coding :) Ha ha, I would like to share that code with you :)</p>
+<pre><span style="color:#b22222;">/*
+ *      121.c
+ *
+ *      Copyright 2009 Ershad K &lt;ershad92@gmail.com&gt;
+ *
+ *      Licensed under GPL Version 3
+ */</span>
+
+<span style="color:#a020f0;">#include &lt;stdio.h&gt;</span>
+
+<strong><span style="color:#4169e1;"><a name="ain"></a>main()</span></strong> {
+
+    int n;
+    int i = 1;
+    int j = 1;
+    printf(<span style="color:#666666;">"Enter a number: "</span>);
+    scanf(<span style="color:#666666;">"%d"</span>,&amp;n);
+
+    // Increment....
+    <span style="color:#4169e1;">for</span> (;i &lt;= n; i++ )
+    {
+        <span style="color:#4169e1;">for</span>(j = 1; j &lt;= i; j++)
+        {
+            printf(<span style="color:#666666;">" %d"</span>,j);
+        }
+        --j;
+
+        <span style="color:#4169e1;">for</span> (--j; j &gt;=1; j--)
+        {
+            printf(<span style="color:#666666;">" %d"</span>,j);
+        }
+        printf(<span style="color:#666666;">"n"</span>);
+    }
+
+    // Decrement....
+
+     <span style="color:#4169e1;">for</span> (i = n-1;i &gt;= 1; i-- )
+    {
+        <span style="color:#4169e1;">for</span>(j = 1; j &lt;= i; j++)
+        {
+            printf(<span style="color:#666666;">" %d"</span>,j);
+        }
+        --j;
+
+        <span style="color:#4169e1;">for</span> (--j; j &gt;=1; j--)
+        {
+            printf(<span style="color:#666666;">" %d"</span>,j);
+        }
+        printf(<span style="color:#666666;">"n"</span>);
+    }
+
+}
+
+Patches are always welcome :) All the best, nice day!
+
+</pre>

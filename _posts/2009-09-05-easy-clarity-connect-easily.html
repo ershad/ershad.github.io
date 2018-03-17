@@ -1,0 +1,66 @@
+---
+layout: single
+title: Easy Clarity - Connect Easily!
+date: 2009-09-05 09:21:26.000000000 +05:30
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- C++
+- Clarity
+- Experiments
+tags:
+- BSNL
+- C++
+- computer
+- Experiments
+- GNU
+- GPL
+- hack
+- Programming
+- Source Code
+- Ubuntu
+meta:
+  _edit_last: '1'
+  dsq_thread_id: '516308791'
+
+---
+<p>'Disconnection' is a routine process in dial up internet. Here is an C++ snippet which dials BSNL WLL Clarity without asking for password again and again. It automatically closes on disconnection with a beep sound.</p>
+<pre class="brush: cpp">/*
+ *      easyclarity.cpp
+ *
+ *      Copyright 2009 Ershad K  ershad92@gmail.com
+ *      Licensed under GPL Version 3
+ *
+ *      Please change USERNAME, PASSWORD and compile with g++
+ *      To compile - g++ easyclarity.cpp
+ *      To execute - ./a.out
+ */
+
+#include &lt;iostream&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+
+using namespace std;
+
+int main ()
+{
+	char username[] = "USERNAME";
+	char password[] = "PASSWORD";
+	puts("n EasyClarity - Connect wisely!  www.ershadk.wordpress.comnn");
+	ofstream myfile;
+	system("sudo wvdialconf");
+	myfile.open ("/etc/widial.conf");
+        myfile &lt;&lt; "[Dialer Defaults]nInit1 = ATZnInit2 = ATQ0 V1 E1 S0=0 "
+               &lt;&lt; "&amp;C1 &amp;D2 +FCLASS=0nInit3 = at+crm=1;+cmux=1;+cps=33;+cta=0"
+               &lt;&lt; "nModem Type = Analog ModemnISDN = 0nPhone = #777nModem"
+               &lt;&lt; " = /dev/ttyUSB0nUsername = "&lt;&lt;username&lt;&lt;"nPassword = "
+               &lt;&lt;password&lt;&lt;"nBaud = 460800nStupid Mode = 1nAuto DNSnCheck"
+                &lt;&lt;" Def Route";
+	myfile.close();
+	system("sudo wvdial");
+	cout &lt;&lt; "a";
+	return 0;
+}</pre>

@@ -1,0 +1,25 @@
+---
+layout: single
+title: Fix for Rails 3.x.x error "[FATAL] failed to allocate memory" in OS X Lion
+date: 2012-05-10 04:51:46.000000000 +05:30
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Ruby on Rails
+tags:
+- gem
+- mysql
+- Programming
+- RubyonRails
+meta:
+  _edit_last: '1'
+  s2mail: 'yes'
+  dsq_thread_id: '683483770'
+
+---
+<p>This error happens when mysql2 gem is either installed for some other version of mysql or when it cannot find required dynamic library. To fix this error, uninstall mysql2 gem and install as follows<br />
+[code]$ env ARCHFLAGS="-arch x86_64" gem install mysql2 -v='0.3.11' -- --with-mysql-dir=/usr/local/mysql --with-mysql-lib=/usr/local/mysql/lib --with-mysql-include=/usr/local/mysql/include --with-mysql-config=/usr/local/mysql/bin/mysql_config[/code]<br />
+Please change '/usr/local/mysql' to your mysql installation path. Thank you.</p>

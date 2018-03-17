@@ -1,0 +1,62 @@
+---
+layout: single
+title: e-FLAMES Beta now in  GNU/Linux  :)
+date: 2009-04-08 13:32:23.000000000 +05:30
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- C++
+tags:
+- C++
+- e-FLAMES
+- GPL
+- Programming
+- Source Code
+meta:
+  _edit_last: '1'
+  dsq_thread_id: '516308846'
+
+---
+<p>Hello friends,</p>
+<p>I'm glad to present the Beta version of e-FLAMES for GNU/Linux before you. Thanks to<a href="http://thejpf-integratinglife.blogspot.com/" target="_blank"> Jesse</a>, for his valuable header file with  getch() function in GNU/Linux.  I have made minor changes in this version and now, it's licensed under GPL V3. The  program still has some errors when strings with special characters are given as input. Please help me correct those and make this program bug-free.  I expect to release the final version before the end of this month. Till then, please try this program and give me your valuable comments.</p>
+<p><a href="http://mail-egang.googlegroups.com/web/e-FLAMES+Beta+GNU.zip?gda=jXm4zUcAAACPZAvJ0GuJ497RSEn-J1UHhL8cqY2_UDrHAF55c7noWAY_7ushPDsjZ7adFVbRW2AbzHe87USdioT9uNiA7PHaeV4duv6pDMGhhhZdjQlNAw&amp;gsc=XDIH_wsAAAAtN-4d-Q2SKH2iog9cNCh2" target="_blank">(Click here to download GNU/Linux executable)</a></p>
+<p>Here are the screenshots :</p>
+<p>[gallery link="file"]</p>
+<p>The source code is written in C++ using Geany as IDE. The source code is given below ...</p>
+<p>/*<br />
+*      e-FLAMES.cpp<br />
+*<br />
+*      Copyright 2009 Ershad K &lt;ershad92@gmail.com&gt;<br />
+*<br />
+*      This program is free software; you can redistribute it and/or modify<br />
+*      it under the terms of the GNU General Public License as published by<br />
+*      the Free Software Foundation; either version 2 of the License, or<br />
+*      (at your option) any later version.<br />
+*<br />
+*      This program is distributed in the hope that it will be useful,<br />
+*      but WITHOUT ANY WARRANTY; without even the implied warranty of<br />
+*      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the<br />
+*      GNU General Public License for more details.<br />
+*<br />
+*      You should have received a copy of the GNU General Public License<br />
+*      along with this program; if not, write to the Free Software<br />
+*      Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,<br />
+*      MA 02110-1301, USA.<br />
+*/</p>
+<p>//Including header files..<br />
+#include &lt;iostream&gt;<br />
+#include &lt;string.h&gt;<br />
+#include &lt;stdlib.h&gt; //for system() function<br />
+#include "jesse_conio.h"</p>
+<p>char name1[30], name2[30]; //declaring global name variables</p>
+<p>using namespace std; // dunno what's this, please tell me..</p>
+<p>void message(); // for general headings and texts</p>
+<p>void getnames(); // for names input</p>
+<p>void copyright(); //print copyright notice</p>
+<p>void changecase( char names[]); //change case function</p>
+<p>void removespecial(char name_1[]); //remove spaces</p>
+<p><a href="http://sites.google.com/site/syntaxclub/e-flames-beta-gnu" target="_blank">(Click here to view full source)</a> <a href="http://mail-egang.googlegroups.com/web/e-FLAMES+Beta+GNU.zip?gda=jXm4zUcAAACPZAvJ0GuJ497RSEn-J1UHhL8cqY2_UDrHAF55c7noWAY_7ushPDsjZ7adFVbRW2AbzHe87USdioT9uNiA7PHaeV4duv6pDMGhhhZdjQlNAw&amp;gsc=XDIH_wsAAAAtN-4d-Q2SKH2iog9cNCh2" target="_blank"> (Click here to download GNU/Linux executable)</a></p>
+<p>This source code can be used in windows also with a few changes in headers and can be succesfully compiled. Please add more features and it would be better if any one works to bring out a GUI version of e-FLAMES. Hope you would like this one and feel free to add your suggestions and opinions as comments. Best Wishes</p>

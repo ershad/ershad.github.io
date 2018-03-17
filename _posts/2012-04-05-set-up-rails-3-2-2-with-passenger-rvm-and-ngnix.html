@@ -1,0 +1,124 @@
+---
+layout: single
+title: Set up Rails 3.2.2 with Passenger, rvm and ngnix
+date: 2012-04-05 19:38:55.000000000 +05:30
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Ruby on Rails
+tags:
+- nginx
+- passenger
+- Rails
+- rvm
+- Server
+- Ubuntu
+meta:
+  _edit_last: '1'
+  s2mail: 'yes'
+  dsq_thread_id: '637988064'
+
+---
+<p>Ruby on Rails is becoming more feature rich and powerful by every release. Naturally the steps to get it working in production environment are also being changed. I've been trying to set up Rails 3.2.2 for a while and here's the method that finally worked. This method should work for the new Rails release, 3.2.3 too.</p>
+<p><strong>Install Server Operating System</strong></p>
+<p>We have a large pool of operating systems to select for our server. Though Debian Squeeze and CentOS have proved their stability in serving rails applications, I would prefer a LTS version of Ubuntu Server edition. I did a small survey, Many experienced programmers said they are using Ubuntu server as it's easy to maintain, Packages are in plenty and has better stability. Also Canonical promises to give us 5 years of support for LTS edition operating systems. Current LTS edition is Ubuntu Server 10.04</p>
+<p><strong>Install RVM</strong></p>
+<p>Ruby Version Manager(RVM) helps to manage multiple ruby versions in a single machine. RVM helps us to quickly switch Ruby/Rails versions. Before installing RVM, we need to install git, curl and autoconf. Use the following command to do it:</p>
+<p>[code]$ sudo apt-get -y install git-core curl autoconf[/code]</p>
+<p>Then install and configure RVM,</p>
+<p>[code]</p>
+<p>$ bash -s stable &lt; &lt;(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)</p>
+<p>$ echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] &amp;&amp; . "$HOME/.rvm/scripts/rvm" # Load RVM function' &gt;&gt; ~/.bash_profile</p>
+<p>[/code]</p>
+<p>Source ~/.bash_profile to add rvm as a function to shell</p>
+<p>[code]$ source ~/.bash_profile[/code]</p>
+<p><strong>Install Ruby</strong></p>
+<p>Before installing Ruby, we need to install all dependency packages. The following command lists the dependency packages.</p>
+<p>[code]$ rvm requirements [/code]</p>
+<p>We can see a line with lots of package names, something like the following. Execute it directly with sudo in shell to install packages:</p>
+<p>[code]</p>
+<p>sudo /usr/bin/apt-get install build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion [/code]</p>
+<p>Next step is to install Ruby. Current latest version of Ruby 1.9.3. Let's install it</p>
+<p>[code]$ rvm install 1.9.3[/code]</p>
+<p>It will take a few minutes to fetch source, configure and compile.</p>
+<p>After completing installation, we can set 1.9.3 as the default version:</p>
+<p>[code]$ rvm use 1.9.3 --default[/code]</p>
+<p><strong>Install passenger</strong></p>
+<p>Passenger is a free module for Apache and nginx to run Ruby applications. Luckily it's available as a Ruby gem and it's easy to install and configure it.</p>
+<p>Install passenger gem</p>
+<p>[code]$ gem install passenger[/code]</p>
+<p>Install and configure nginx</p>
+<p>[code]$ rvmsudo passenger-install-nginx-module[/code]</p>
+<p>This command downloads nginx source code, builds it and finally configures passenger for us. Default location of ngnix is /opt/nginx and we can find the configuration in /opt/nginx/conf/nginx.conf</p>
+<p>If you open nginx configuration, you can see the following lines have been already added into it in 'http' configuration:</p>
+<p>[code]</p>
+<p>passenger_root /home/ershad/.rvm/gems/ruby-1.9.3-p125/gems/passenger-3.0.11;<br />
+passenger_ruby /home/ershad/.rvm/wrappers/ruby-1.9.3-p125/ruby;</p>
+<p>[/code]</p>
+<p><strong>Install Rails</strong></p>
+<p>Before installing rails, we will create a gemset. Gemset is feature of RVM where we can create multiple gemset to store different gems of different versions.</p>
+<p>Let's create a gemset for Rails 3.2.2</p>
+<p>[code]</p>
+<p>$ rvm gemset create rails322</p>
+<p>$ rvm gemset use rails322</p>
+<p>[/code]</p>
+<p>Installing rails is pretty straight forward.</p>
+<p>[code]$ gem install rails -v 3.2.2[/code]</p>
+<p>If you are not interested in the documentation that comes along with rails gem, use the following command instead</p>
+<p>[code]$ gem install rails -v 3.2.2  --no-ri --no-rdoc [/code]</p>
+<p><strong>Install nginx init script</strong></p>
+<p>nginx init script by Jason Giedymin helps us to administer web server easily.</p>
+<p>[code]<br />
+$ cd<br />
+$ git clone git://github.com/jnstq/rails-nginx-passenger-ubuntu.git<br />
+$ sudo mv rails-nginx-passenger-ubuntu/nginx/nginx /etc/init.d/nginx<br />
+$ sudo chown root:root /etc/init.d/nginx<br />
+[/code]</p>
+<p><strong><span style="font-family: monospace;">Deploying application</span></strong><br />
+Let's store all rails applications under /var/rails_apps/ directory. Let's make such a folder<br />
+[code]<br />
+$ sudo mkdir -p /var/rails_apps<br />
+$ sudo chmod 777 /var/rails_apps/ #giving full file permissions<br />
+[/code]<br />
+Let's create a sample rails application in rails_apps directory<br />
+[code]<br />
+$ cd /var/rails_apps<br />
+$ rails new helloworld<br />
+$ cd helloworld<br />
+$ vim Gemfile # and uncomment the line to include 'therubyracer' gem. We need a javascript runtime<br />
+$ bundle install<br />
+$ bundle exec rake assets:precompile #Precompile assets to public/ dir</p>
+<p>[/code]<br />
+Next step is point ngnix to this location. Add the following snippet in /opt/nginx/conf/nginx.conf<br />
+[code]</p>
+<p>server {<br />
+listen 80;<br />
+server_name example.com;<br />
+rails_env production;<br />
+root /var/rails_apps/helloworld/public; # &lt;--- be sure to point to 'public'!<br />
+passenger_enabled on;<br />
+}</p>
+<p>[/code]</p>
+<p>Restart the server</p>
+<p>[code] sudo /etc/init.d/nginx restart[/code]</p>
+<p>Your application must be alive and running now! :)</p>
+<p><strong>Points to remember</strong></p>
+<p>1) Rails application doesn't get updated when we change the code. This is because we need to restart passenger explicitly</p>
+<p>Restarting passenger is easy, we just have to create a file 'restart.txt' in tmp/ dir of the application. For example</p>
+<p>[code]</p>
+<p>$ cd /var/rails_apps/helloworld</p>
+<p>$ touch tmp/restart.txt</p>
+<p>[/code]</p>
+<p>2) Always precompile assets after generating controller or scaffold</p>
+<p>3) Make sure you are migrating in 'production' environment. This can be done using the following command.</p>
+<p>[code] rake db:migrate RAILS_ENV=production[/code]</p>
+<p>4) When you get errors related to routes, check the list of all routes</p>
+<p>[code] $ rake routes [/code]</p>
+<p>5) When something goes wrong, see log/production.log</p>
+<p>6) If you happen to get passenger errors related to missing gems, just add those gems in Gemfile and use the following command</p>
+<p>[code] $ bundle install --path vendor/bundle [/code]</p>
+<p>That's it. Happy hacking with Ruby on Rails. Thank you.</p>
+<pre></pre>

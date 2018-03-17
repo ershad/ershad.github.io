@@ -1,0 +1,70 @@
+---
+layout: single
+title: C++ Program to tweet
+date: 2009-09-20 11:11:59.000000000 +05:30
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- C++
+- Experiments
+tags:
+- C++
+- Experiments
+- GNU
+- GPL
+- hack
+- Programming
+- Source Code
+meta:
+  _edit_last: '1'
+  dsq_thread_id: ''
+
+---
+<p>It's very interesting to play with C++ and if it is in GNU/Linux, lots of tools like 'wget', 'grep',etc. are there to help us in time. Here is a simple C++ snippet which tweets directly to your time line. Feel free to add more features and would be great if you could share it with me too :)</p>
+<blockquote>
+<pre>/*
+ *      shell-tweet.cpp
+ *
+ *      Copyright 2009 Ershad K  ershad92@gmail.com
+ *      Licensed under GPL Version 3
+ *
+ *      Please change USERNAME, PASSWORD and compile with g++
+ *      To compile - g++ shell-tweet.cpp
+ *      To execute - ./a.out
+ */</pre>
+<p>#include &lt;iostream&gt;<br />
+#include &lt;string.h&gt;<br />
+#include &lt;stdlib.h&gt;</p>
+<p>using namespace std;</p>
+<p>int main()<br />
+{<br />
+char name[] = "username", password[] = "password", status[500], cmd[500];</p>
+<p>char sym[] = {char(34),''};</p>
+<p>again: cout &lt;&lt; "n Status: ";<br />
+fgets (status,140,stdin);</p>
+<p>cout &lt;&lt; "n Length = " &lt;&lt; strlen(status);</p>
+<p>if (strlen(status) &gt; 139)<br />
+{<br />
+cout &lt;&lt; " Exceeds 140 character limit, Type again n";<br />
+goto again;<br />
+}<br />
+else<br />
+{</p>
+<p>strcpy(cmd,"wget -nv --keep-session-cookies --http-user=");</p>
+<p>strcat(cmd,name);<br />
+strcat(cmd," --http-password=");<br />
+strcat(cmd,password);<br />
+strcat(cmd," --post-data=");<br />
+strcat(cmd,sym);<br />
+strcat(cmd,"status=");<br />
+strcat(cmd,status);<br />
+strcat(cmd,sym);<br />
+strcat(cmd," http://twitter.com:80/statuses/update.xml");</p>
+<p>system(cmd);</p>
+<p>cout &lt;&lt; "n Done";<br />
+}<br />
+return 0;<br />
+}</p></blockquote>

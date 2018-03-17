@@ -1,0 +1,34 @@
+---
+layout: single
+title: 'GSoC 2013: Week 8 of Grandham project'
+date: 2013-08-11 18:47:22.000000000 +05:30
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Grandham
+- GSoC 2013
+- Ruby on Rails
+- Software
+tags:
+- development
+- grandham
+- gsoc
+- gsoc2013
+- Programming
+- RubyonRails
+- smc
+- Source Code
+meta:
+  _edit_last: '1'
+
+---
+<p style="text-align: left;">Last weekly I mainly worked on Search feature and admin interfaces. Here's a quick review:</p>
+<ul>
+<li>Experimented with various search engines like Sphinx, Ferret, etc and finally decided to use <a href="http://lucene.apache.org/solr/">Solr</a> with <a href="https://github.com/sunspot/sunspot">sunspot</a> gem as it worked well with unicorn data without any configuration.</li>
+<li>Wrote a general search backend interface for Grandham. We can plugin other search engines anytime as long as it communicated the way Grandham needs it.</li>
+<li>Added Admin interfaces managing Authors and Publishers.</li>
+</ul>
+<p style="padding-left: 30px;">

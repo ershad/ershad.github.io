@@ -1,0 +1,36 @@
+---
+layout: single
+title: 'GSoC 2013: Week 1 of Grandham project'
+date: 2013-07-14 21:32:29.000000000 +05:30
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Grandham
+- GSoC 2013
+- Ruby on Rails
+- Software
+tags:
+- development
+- grandham
+- gsoc
+- gsoc2013
+- Programming
+- RubyonRails
+- smc
+- Source Code
+meta:
+  _edit_last: '1'
+  _wp_old_slug: grandha-week-1
+
+---
+<p>The first week of development which started on 17th of June essentially comprises requirement analysis, planning and API implementation.</p>
+<p><strong>Requirement Analysis</strong></p>
+<p>Though the basic requirements for Grandham were discussed a month before, it was necessary to have more clarity on the subject. I had a series of discussions with mentors on various aspects of application, especially on how this project would attract information from contributors of different competency. It was sorted out that normal user could provide just the basic information such as Title, Author(s), Publisher(s), Year, Pages, Edition and Description. Advanced users, who are competent with MARC21 format could contribute advanced bibliographic information through a specially designed interface.</p>
+<p>As mentioned in the previous post, we had a meeting with Sri K. H. Hussain. Apart from inspiring and guiding us, he made us aware about the importance of having an API and integration with various library systems in existence. I especially remember seeing a live instance of <a href="http://www.koha.org">Koha</a> and its super complex MARC21 data input form. It will be really great if it could consume Grandham API and vice versa so that we would have proper data sharing between two information resources.</p>
+<p><strong>Planning</strong></p>
+<p>I had little confusions around how to store information. I was thinking of extracting basic information from complex MARC21 data to display in individual books page. But since it was decided that users feed them differently, we could easily store basic information separately and use them. Separate data models to store information as Key/Value pair were written, but I removed them all for the sake of readability and easiness. It was this period when we decided to integrate <a href="http://bootswatch.com">Bootswatch</a> for front end CSS framework.</p>
+<p><strong>API Implementation</strong></p>
+<p>Books and Fields API were written during period using <a href="https://github.com/rails/jbuilder">jbuilder</a>. The data importer script was updated to meet the changes in the application.</p>

@@ -1,0 +1,41 @@
+---
+layout: single
+title: Setting up a Debian repo in LAN
+date: 2011-04-26 14:14:14.000000000 +05:30
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Debian
+- Experiments
+tags:
+- debian
+- Experiments
+- How to
+- Network
+- Tips
+meta:
+  _edit_last: '1'
+  superawesome: 'false'
+  jabber_published: '1303807454'
+  email_notification: '1303807455'
+
+---
+<p>It was really a nice experience going to <a href="http://www.mesce.ac.in" target="_blank">MES College Of Engineering</a>, Kuttippuram last week to attend Debian Mini Conf 2011. Met friends, made new friendships and learned many new things from there. Thanks to <a href="http://thecodecracker.com/" target="_blank">Jishnu ettan</a>, for giving me a 50GB Debian repo that contains all the packages of squeeze of both i686 and amd64 architectures. Today, I will explain how to set up a Debian repo (squeeze) so that it be can shared over LAN.</p>
+<p>First, run terminal and switch to root user.</p>
+<blockquote><p>$su</p></blockquote>
+<p>If you have the repo as an ISO image file, we need to mount it to a directory. The following command does that:</p>
+<blockquote><p>#mount &lt;path-to-iso&gt; &lt;path-to-mount&gt; -o loop</p></blockquote>
+<p>Edit /etc/apt/source.lst and add the repo we mounted. Append the following line to the file:</p>
+<blockquote><p>deb file:///&lt;mounted-path&gt; squeeze main</p></blockquote>
+<p>Update the package list:</p>
+<blockquote><p>#apt-get update</p></blockquote>
+<p>We are going to share the files using http, hence we need a webserver. To install apache:</p>
+<blockquote><p>#apt-get install apache2</p></blockquote>
+<p>Make a symbolic link of &lt;mounted-path&gt; in /var/www</p>
+<blockquote><p>#ln -s /var/www/repo &lt;mounted-path&gt;</p></blockquote>
+<p>Done! Now add this machine as a repository in other Debian systems in LAN, edit /etc/apt/source.lst to:</p>
+<blockquote><p>deb http://&lt;ip-of-server&gt;/repo squeeze main</p></blockquote>
+<p>The same can be done using a FTP server. All you have to do is to make the symbolic link in FTP's configured path and use ftp:// instead of http:// in /etc/apt/source.lst. Thank you :)</p>

@@ -1,0 +1,41 @@
+---
+layout: single
+title: 'GSoC 2013: Week 3 of Grandham project'
+date: 2013-07-14 22:49:17.000000000 +05:30
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- GSoC 2013
+- Ruby on Rails
+- Software
+tags:
+- development
+- grandham
+- gsoc2013
+- RubyonRails
+- smc
+- Source Code
+meta:
+  _edit_last: '1'
+
+---
+<p>In Week 3, I was mostly designing routes and developing the submission interface for Grandham.</p>
+<p><strong>Submission Interface</strong></p>
+<p><img class="size-medium wp-image-705 alignright" alt="Grandham" src="{{ site.baseurl }}/assets/Grandham-300x276.png" width="300" height="276" /></p>
+<p>Grandham should have two interfaces for data submission.</p>
+<ol>
+<li><span style="line-height: 14px;">Interface for normal users</span></li>
+<li>Interface for advanced users</li>
+</ol>
+<p>The first interface, the form to input basic details of a book has been implemented. All the information entered through this form directly goes to 'Submission' model with 'approved' = false. Later when the task force changes 'approved' value to true, all other submission will get disapproved and this submission details would get featured in Book page.</p>
+<p>We are storing Author and Publisher information in different models connected to Submission using a <em>has_many :through</em> association and we use the rails feature <em>accepts_nested_attributes_for</em> to input them in the same Submission#new interface.</p>
+<p><strong>Miscellaneous</strong></p>
+<p>We now have language based navbar in which the links would change according to the language selected. This would help users to quickly navigate to Book, Authors, Publishers and Libraries. It will be an UX enhancement to show selected Language in navbar, will do that.</p>
+<p>We have a very basic 2 column books listing now, it's mainly for development purposes and testing. We will have a proper books listing on the way.</p>
+<p>In other news, I got Travis working with selenium integration specs. It required some additional bits of configuration like this -</p>
+<pre>before_install:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"</pre>

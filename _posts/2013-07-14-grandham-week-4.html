@@ -1,0 +1,38 @@
+---
+layout: single
+title: 'GSoC 2013: Week 4 of Grandham project'
+date: 2013-07-14 23:16:19.000000000 +05:30
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Grandham
+- GSoC 2013
+- Ruby on Rails
+- Software
+tags:
+- development
+- grandham
+- gsoc
+- gsoc2013
+- RubyonRails
+- smc
+- Source Code
+meta:
+  _edit_last: '1'
+
+---
+<p>Last week, I worked on edit book feature and design mockups.</p>
+<p><strong>Edit book feature</strong></p>
+<p>As you know from previous posts, we have Submission model to store every contribution from users. When an user submits a correction or an edit, it gets stored as a new Submission in submissions table which needs approval from task force to live. 'Edit' component of this feature was implented last week.</p>
+<p>We have a few routes associated with this feature.</p>
+<p>The following route is to post details for adding a new book. It requires language_id (language short code such as ML or EN) to associate the book to that language. Grandham creates new Submission and a new Book instance (with auto generated grandham_id) if submission to this route was successful.</p>
+<pre> POST language_submissions_path - /language/:language_id/submissions</pre>
+<p>Next route is the edit book feature's route. It requires book_id (grandham_id of the book) to accept information. It creates just a new Submission for the exising book. This submission will be available for task force to approve.</p>
+<pre> POST book_submissions_path - /books/:book_id/submissions</pre>
+<p><strong>Design mockups</strong></p>
+<p>Like I mentioned in <a title="GSoC 2013: Updates on Grandham project" href="http://ershadk.com/blog/2013/07/14/grandham-update-2/">one of my previous posts</a>, I had drawn the design mockups for basic features of Grandham. The application will be in a state to go live when the features in design mockups are done.</p>
+<p><strong>Miscellaneous</strong></p>
+<p>We now have a live instance of app running in Heroku - <a href="http://grandham.herokuapp.com">grandham.herokuapp.com</a>.</p>

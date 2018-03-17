@@ -1,0 +1,82 @@
+---
+
+title: Python Script to backup tweets
+date: 2010-06-05 21:55:20.000000000 +05:30
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Experiments
+- python
+tags:
+- Experiments
+- Programming
+- python
+- Source Code
+meta:
+  jabber_published: '1275755127'
+  _edit_last: '1'
+  email_notification: '1275755128'
+  _wp_old_slug: ''
+  dsq_thread_id: '516308778'
+
+---
+<p>It was some conversations in Twitter with @aashiks and @geohacker that made me write this script. The conversation goes like this:</p>
+<pre><em>
+geohacker : What is the best way to archive my twitter timeline?
+            I think I'm loosing several precious tweets! #help #please
+ershus    : Copy-paste ? ;)
+aashiks   : @geohacker ask @ershus to write a python script and
+            retrieve data using the twitter api
+ershus    : @aashiks My god! ഞാന്‍ ഒന്നും പറഞ്ഞില്ല ! ദയവായ് ക്ഷമിക്കൂ.....
+            PS: വിടാന്‍ ഉദ്ദേശമില്ല, ശ്രമിക്കാം :) ( @geohacker )
+aashiks   : @geohacker - kandallo ? thats how you do it :D
+            @ershus vegam V0.1 erakku :D
+</em></pre>
+<p>Well, this little script is born! Thanks to them, else I would not have written anything like this.</p>
+<p>This is my first 'working' python script and I'm very happy to share with you. I've just started using python,  you may be able to suggest a lot of improvements in the code. Please help me by pointing out the mistakes and other suggestions.</p>
+<p>This script uses <a href="http://code.google.com/p/python-twitter/">python-twitter</a> library,  please make sure it's installed before running the code.</p>
+<p>Thanks to <a href="http://rajeeshknambiar.wordpress.com/" target="_blank">Rajeesh ettan</a> who helped me with unicode issues and time.sleep() :)</p>
+<p>Here's the code:</p>
+<pre>#! /usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# pyTweetBackUp.py
+# Version 1.0
+#
+# Copyright (C) 2010 - Ershad K   ershad92@gmail.com
+#
+# Licensed under GPL Version 3
+
+import os, sys, codecs
+import time
+import twitter
+
+# Change the following values
+username = 'USERNAME'
+password = 'PASSWORD'
+backup_file = 'twitterbackfile' #File name or Path + File name
+sleep_time = 5 #seconds
+
+fout = codecs.open(backup_file, 'a') #to create such a file
+api = twitter.Api(username, password)
+
+while (True):
+	time.sleep(sleep_time)
+	timeline = api.GetFriendsTimeline(username)
+	for s in timeline:
+		#print "%st%s" % (s.user.name, s.text)
+		tweet = s.user.name + "t" + s.text
+		fin = open(backup_file, 'r')
+		x = fin.read()
+		y = x.find(tweet.encode("utf-8"))
+		fin.close()
+
+		if y &lt; 0:
+			fout = codecs.open(backup_file, 'a')
+			text = s.user.name + "t" + s.text + "n"
+			fout.write(text.encode("utf-8"))
+			fout.close()</pre>
+<p>Thank you :)</p>

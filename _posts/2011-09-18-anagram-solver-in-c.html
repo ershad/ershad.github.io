@@ -1,0 +1,30 @@
+---
+layout: single
+title: Anagram Solver in C
+date: 2011-09-18 11:28:26.000000000 +05:30
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Experiments
+tags:
+- C++
+- Experiments
+- GPL
+- Programming
+- Source Code
+meta:
+  superawesome: 'false'
+  _edit_last: '1'
+  jabber_published: '1316325509'
+  email_notification: '1316325510'
+  s2mail: 'yes'
+  dsq_thread_id: '530720483'
+
+---
+<p>Hi, Here's a small anagram solver written in C. It works based on generating permutations of given string and comparing them using a dictionary. For fast search in dictionary, the program first creates an index of the starting location of each alphabet. It takes a few minutes to process long words.</p>
+<p><a href="https://github.com/ershad/Snippets/blob/master/anagramSolver.c" target="_blank">Here's the source code</a>. Suggestions are always welcome, Greetings :)</p>
+<p>Update: There's a little problem in using the term 'anagram solver' here. An anagram solver finds words from another valid word - But this program finds words from the characters of given valid/invalid word.  Thanks to <a href="http://technikhil.wordpress.com">technikhil</a> for the info :)</p>
+<p>Note: Realized that this implementation of anagram solver is inefficient. Will post a better one soon.</p>

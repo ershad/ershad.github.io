@@ -6,5 +6,5 @@ main:
     url: /about
   - title: "Subscribe"
     url: https://feedburner.google.com/fb/a/mailverify?uri=ershadk
-  # - title: "Sitemap"
-  #   url: /sitemap/
+    target: '_blank'
+

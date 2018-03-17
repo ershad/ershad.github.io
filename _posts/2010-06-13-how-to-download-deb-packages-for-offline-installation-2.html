@@ -1,0 +1,40 @@
+---
+layout: single
+title: How to download .deb packages for offline installation
+date: 2010-06-13 11:42:36.000000000 +05:30
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Experiments
+tags:
+- apt
+- debian
+- Experiments
+- GNU
+- How to
+- Internet
+- Tips
+- Ubuntu
+meta:
+  _edit_last: '1'
+  jabber_published: '1276409559'
+  email_notification: '1276409560'
+  _wp_old_slug: ''
+  dsq_thread_id: '516308769'
+  s2mail: 'yes'
+
+---
+<p>Some of my friends always complain that they are not able download packages due to Internet availability issues or usage limit. Most of them are using different Ubuntu versions, hence I cannot use APTonCD to download the packages for them. Here's a small solution for this, Thanks to ilug-tvm and Rajeesh ettan.</p>
+<p>Step 1: Get the download URLs in a file :</p>
+<p>Execute the following command replacing <code>package-names</code> with required ones, separating by a space.</p>
+<blockquote><p><code>$apt-get -y install --print-uris package-name | cut -d' -f2 | grep http:// &gt; apturls</code></p></blockquote>
+<p>Step 2: Copy this file (apturls) to a machine which has high-speed Internet access, and execute the following command to download the packages:</p>
+<blockquote><p><code>$wget -i path-to-apturls-file </code></p></blockquote>
+<p>Step 3: Now get those downloaded packages to your machine, and install them using :</p>
+<blockquote><p><code>$cd path-to-the-downloaded-packages-directory</code></p>
+<p>$sudo dpkg -i *.deb</p></blockquote>
+<p>Done!</p>
+<p>Thank you, Good Luck :)</p>

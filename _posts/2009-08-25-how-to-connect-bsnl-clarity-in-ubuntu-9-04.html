@@ -1,0 +1,40 @@
+---
+layout: single
+title: How to connect BSNL Clarity in ubuntu 9.04 ?
+date: 2009-08-25 06:15:55.000000000 +05:30
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Experiments
+tags:
+- BSNL
+- Experiments
+- hack
+- Tips
+- Ubuntu
+meta:
+  _edit_last: '1'
+
+---
+<p>Though we have many tools to connect BSNL Clarity in Linux Systems, unfortunately they don't work in ubuntu 9.04 and in other lastest OS'. Here, i will explain how to get connected with BSNL clarity in ubuntu 9.04.</p>
+<p>First, you need to edit the grub and add a line to ubuntu's kernel. Follow the steps to do that:</p>
+<blockquote><p>sudo gedit /boot/grub/menu.lst</p></blockquote>
+<p>Modify the ubuntu's boot configuration to like this :</p>
+<p>title        Ubuntu 9.04<br />
+uuid        b744ea84-c1b7-4519-9223-3bb99103d42f<br />
+kernel        /boot/vmlinuz-2.6.28-11-generic root=UUID=b744ea84-c1b7-4519-9223-3bb99103d42f ro quiet splash <strong>usbserial.vendor=0x15eb usbserial.product=0x0001</strong><br />
+initrd        /boot/initrd.img-2.6.28-11-generic</p>
+<p>I simply added  '<strong>usbserial.vendor=0x15eb usbserial.product=0x0001' </strong>to the kernel.</p>
+<p>Next step is to install wvdial. Since the ubuntu 9.04 CD edition doesn't have wvdial by default, we need to install it manually. Follow the steps to install it :</p>
+<p>1. Download <strong><a href="http://groups.google.com/group/cppworld/web/wvdial.zip">this</a></strong> file</p>
+<p>2. Extract it in your home directory</p>
+<p>3. Give the following commands in terminal</p>
+<blockquote><p>cd wvidal</p>
+<p>sudo dpkg -i *.deb</p></blockquote>
+<p>4. Restart the computer</p>
+<p>It's done ! Now you can browse like the older versions of ubuntu by executing Mr.Dipin Krishna's executable (./bsnlclarity in terminal after copying it in your home directory) . You can get it <strong><a href="http://blog.dipinkrishna.info/2008/10/easy-way-to-access-internet-through.html">here</a></strong>. Good Luck :)</p>
+<p><strong><br />
+</strong></p>

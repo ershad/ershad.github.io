@@ -1,0 +1,38 @@
+---
+layout: single
+title: A sudoku checking program in C :)
+date: 2011-04-09 16:27:47.000000000 +05:30
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Experiments
+tags:
+- C++
+- Experiments
+- Programming
+- Source Code
+- sudoku
+meta:
+  _edit_last: '1'
+  jabber_published: '1302346669'
+  email_notification: '1302346670'
+  dsq_thread_id: '516308751'
+
+---
+<p>It just started when my younger bro, Shafeeq who reads <a href="http://news.ycombinator.com/">hacker news</a> everyday, found a little interesting blog post. It was about the authors experience in applying for an internship at Google. The candidate was asked to write a program to check a completed sudoku during the telephone interview  for errors, in his favorite programming language. I asked bro, "Why don't you give it a try?!". He's now in 11th standard and started coding in C++ which he learns in Computer Science subject.  He came up with the code in one day, and then it was my turn to do that :) Here's the way I solved the problem and it's in pure C.</p>
+<p>You can find the code <a href="https://github.com/ershad/checksudoku/blob/master/checksudoku.c" target="_blank">here, in github</a>. The input is given as a plain text file that contains 9x9 numbers separated by space. A sample input is given below:</p>
+<blockquote><p>7 2 3 8 4 6 1 5 9<br />
+6 1 5 3 9 2 4 7 8<br />
+8 4 9 7 1 5 6 3 2<br />
+3 7 8 6 5 4 9 2 1<br />
+1 9 4 2 8 7 3 6 5<br />
+2 5 6 9 3 1 8 4 7<br />
+5 6 1 4 7 9 2 8 3<br />
+4 8 7 1 2 3 5 9 6<br />
+9 3 2 5 6 8 7 1 4</p></blockquote>
+<p>And to check for errors, please call the program with the file as argument, like this -</p>
+<blockquote><p>$checksudoku &lt;data_file&gt;</p></blockquote>
+<p>Hope you enjoyed it, Please go through the code and feel free to post your valuable comments and suggestions here. Thank you :)</p>

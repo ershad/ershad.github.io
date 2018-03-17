@@ -1,0 +1,38 @@
+---
+layout: single
+title: 'GSoC 2013: Week 5 of Grandham project'
+date: 2013-07-21 14:11:41.000000000 +05:30
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Grandham
+- GSoC 2013
+- Ruby on Rails
+- Software
+tags:
+- development
+- grandham
+- gsoc
+- gsoc2013
+- Programming
+- RubyonRails
+- smc
+meta:
+  _edit_last: '1'
+
+---
+<p>Last week, I implemented different parts of the application including the basics of user authorization. Also did a work on refactoring the code base, our tests are clean now.</p>
+<p><strong>New features</strong></p>
+<p>We now have a page to display information of a specific book, which can be navigated from the books list. This page will eventually contain all the information, including location information and links to download the entire MARC data.</p>
+<p>User authorization has been added to Grandham using the gem 'devise'. Devise provides beautiful forms required for various user-authorization needs, I customized them to work with the look and feel for Grandham. Some of them are here:</p>
+<p><a href="http://ershadk.com/blog/wp-content/uploads/2013/07/Grandham-sign-in-2.png"><img class="wp-image-728 alignleft" alt="Grandham sign in 2" src="{{ site.baseurl }}/assets/Grandham-sign-in-2-300x160.png" width="180" height="96" /></a><a href="http://ershadk.com/blog/wp-content/uploads/2013/07/Grandham-registration.png"><img class="wp-image-729 alignleft" alt="Grandham registration" src="{{ site.baseurl }}/assets/Grandham-registration-300x160.png" width="180" height="96" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>(Social login needs to be implemented in coming weeks)</p>
+<p>Our test suite was starting to clutter and due to a problem in <em>factories</em> the <a href="http://travis-ci.org/smc/grandham" target="_blank">CI</a> has been failing randomly. I've refactored the test suite and now it all works fine.</p>
+<p><strong>Miscellaneous </strong></p>
+<p>In other news, we have switched the browser to run tests from selenium - firefox to <a href="https://github.com/jonleighton/poltergeist" target="_blank">poltergeist</a> - <a href="http://phantomjs.org/" target="_blank">phantomjs</a>. It helps us to run tests faster. Also I've updated our API and data import script.</p>

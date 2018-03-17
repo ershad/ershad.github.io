@@ -1,0 +1,28 @@
+---
+layout: single
+title: 'GSoC 2013: Week 9 of Grandham project'
+date: 2013-08-25 20:20:50.000000000 +05:30
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- GSoC 2013
+- Ruby on Rails
+- Software
+tags:
+- development
+- grandham
+- gsoc
+- gsoc2013
+- Programming
+- RubyonRails
+- smc
+- Source Code
+meta:
+  _edit_last: '1'
+
+---
+<p>In Week 9, I rewrote the complete crowdsourcing functionality of Grandham from a submission based approach to micro-edits based approach. Earlier we used to store the entire snapshot while recording modifications but now we store only the 'edit' (similar to diff, but in a structured database table) and pass it to admins for reviewing. This approach has some significant advantages including the easy generation of history of book pages.</p>
+<p>In-place editing was integrated during the same week. Now participants can click on a field and edit it.</p>

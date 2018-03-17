@@ -1,0 +1,74 @@
+---
+layout: single
+title: Python Script to fix VBR errors of mp3 files in a directory, recursively
+date: 2011-02-19 17:37:18.000000000 +05:30
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Experiments
+- python
+tags:
+- Experiments
+- hack
+- Programming
+- python
+- Source Code
+- Tips
+meta:
+  _edit_last: '1'
+  jabber_published: '1298117243'
+  email_notification: '1298117245'
+  dsq_thread_id: '516308759'
+
+---
+<p>If the seek bar of your rhythmbox is not working with some mp3 files, it might be an issue with Variable Bit Rate of them. The tool, 'vbrfix' written by William Pye solves the issue, but the problem is that it doesn't have an option to search for files recursively. Here is a small python script that gets the paths of multiple mp3 files recursively and give them as arguments to vbrfix tool. Make sure you install vbrfix (from the software repo) before running the script.</p>
+<p>Please see comments for a better, 1 line substitute to do the same. Thanks to Rajeesh ettan and Syam ettan :)</p>
+<pre class="brush:cpp">#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#
+#       vbrfixdir.py
+#
+#       Copyright 2011 Ershad K &lt;ershad92@gmail.com&gt;     
+#
+#       Usage: python vbrfixdir.py
+#
+#       This program is free software; you can redistribute it and/or modify
+#       it under the terms of the GNU General Public License as published by
+#       the Free Software Foundation; either version 2 of the License, or
+#       (at your option) any later version.
+#
+#       This program is distributed in the hope that it will be useful,
+#       but WITHOUT ANY WARRANTY; without even the implied warranty of
+#       MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#       GNU General Public License for more details.
+#
+#       You should have received a copy of the GNU General Public License
+#       along with this program; if not, write to the Free Software
+#       Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+#       MA 02110-1301, USA.
+
+import sys
+import os
+
+quote = '"'
+folder = sys.argv[1]
+find_command = "find " + folder
+find_command += " &gt; mp3files_list"
+
+os.system(find_command)
+os.system("sed 1d mp3files_list &gt; mp3files_list1");
+
+f = open("mp3files_list1", 'r')
+for line in f:
+    line = line[:len(line)-1]
+    command = "vbrfix -always "
+    command += quote + line + quote
+    command += " " + quote + line + quote
+    print command
+    os.system(command)
+
+os.system("rm mp3files_list mp3files_list1")</pre>
+<p>Improvements to code and suggestions are always welcome, Happy Hacking :)</p>

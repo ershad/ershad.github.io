@@ -1,0 +1,40 @@
+---
+layout: single
+title: Irssi notification in terminal using 'write command'
+date: 2010-05-10 10:54:00.000000000 +05:30
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Experiments
+tags:
+- Fedora
+- GPL
+- hack
+- Internet
+- irc
+- Source Code
+- Tips
+meta:
+  email_notification: '1273469045'
+  _edit_last: '1'
+  dsq_thread_id: '634419040'
+
+---
+<p>In Desktop Environments like KDE or GNOME, we have special libraries like knotify or libnotify to display notifications from various applications. Some applications like Konversation has its own notification systems. But what about command line tools like Irssi? Imagine you are chatting in tty1 using irssi and doing something in tty2.How will you know if someone has mentioned you nick in channel message? Well, here is a small solution for this.</p>
+<p><a href="http://lewk.org/blog/2006/05/19/irssi-notify" target="_blank">Luke Macken</a> has written a wonderful  perl script to display notifications using notify-send command in desktop environments. Thanks to open source, I tweaked the call to notify-send command to suit our tty-notification. All that you have to do is this :</p>
+<p>Step 1 : <a href="http://lewk.org/blog/2006/05/19/irssi-notify">Get</a> the Script and write it to a file 'notify.pl'.</p>
+<p>Step 2 : Replace</p>
+<blockquote><p>system("notify-send -i gtk-dialog-info -t 5000 '$dest-&gt;{target}' '$stripped'");</p></blockquote>
+<p>With</p>
+<blockquote><p>system("echo '$dest-&gt;{target}' '$stripped' | write &lt;Your username&gt;");</p></blockquote>
+<p>Make sure you replace &lt;Your username&gt; with your system username.</p>
+<p>Step 3 : Put it in ~/.irssi/scripts/ directory.</p>
+<p>Step 4 : Execute the following commands in irssi:</p>
+<blockquote><p>/load perl<br />
+/script load notify</p></blockquote>
+<p>Done, you will get notification to the latest tty to which you are logged in!<br />
+Good luck :)</p>
+<p>PS: The notification that you get is not eye-candy, please adjust for it now :)</p>

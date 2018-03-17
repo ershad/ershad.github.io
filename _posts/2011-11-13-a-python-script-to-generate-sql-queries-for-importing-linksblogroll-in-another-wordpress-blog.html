@@ -1,0 +1,30 @@
+---
+layout: single
+title: A python script to generate SQL queries for importing links/blogroll in another
+  wordpress blog
+date: 2011-11-13 07:47:13.000000000 +05:30
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Experiments
+- python
+tags:
+- Experiments
+- hack
+- Programming
+- python
+- Source Code
+meta:
+  dsq_thread_id: '516308712'
+  _edit_last: '1'
+  s2mail: 'yes'
+
+---
+<p>Here's the problem: There are 30 precious links in my <a href="http://ershadk.wordpress.com">old blog</a> under blogroll. Exporting feature of wordpress does not export the contents in blogroll/links. The task is to import those links in this new blog with minimum effort.</p>
+<p>Well, Adding 30 links manually ain't difficult - it may take a maximum of 15 minutes to complete the task. But it's too repetitive and boring. The best way is obviously writing a script.</p>
+<p>Here's a small python script that generates SQL queries to insert old blogroll items in new database. It will ask for old blog URL and new database name - that's it, it will search your old blog for blogroll links and print INSERT statements in stdout suitable for executing in phpmyadmin or directly in mysql shell :)</p>
+<p>Hope you like it, Thank you :)</p>
+<p><script src="http://gist-it.appspot.com/github/ershad/Snippets/raw/master/blogrollSQLGenerator.py"></script></p>

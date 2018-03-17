@@ -1,0 +1,64 @@
+---
+layout: single
+title: The little twitter client I use :)
+date: 2011-03-12 23:45:44.000000000 +05:30
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Experiments
+- python
+tags:
+- Experiments
+- hack
+- Internet
+- Programming
+- python
+- Source Code
+meta:
+  jabber_published: '1299953745'
+  _edit_last: '1'
+  email_notification: '1299953746'
+  dsq_thread_id: '516308758'
+
+---
+<p>Here's a small python script to update and read tweets from different timelines. You can use it with head/tail commands to customize the output.  Actually, I wrote this script just for personal use and now I would like to share it with you :) Thanks to tweepy python module, make sure it's installed before trying the script :)</p>
+<pre class="brush:cpp">#!/usr/bin/env python
+# Copyright 2011 Ershad K &lt;ershad92@[nospam]gmail.com&gt;
+# Licensed under GPL Version 3
+
+import sys
+import tweepy
+
+CONSUMER_KEY = ' Fill here'
+CONSUMER_SECRET = ' File here too'
+ACCESS_KEY = ' Type yours here'
+ACCESS_SECRET = 'Type yours here too'
+
+auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
+api = tweepy.API(auth)
+
+if sys.argv[1] == 'u':
+    api.update_status(sys.argv[2])
+
+elif sys.argv[1] == 'p':
+    public_tweets = api.public_timeline()
+    for tweet in public_tweets:
+        print tweet.user.screen_name,":",tweet.text
+        print ""
+
+elif sys.argv[1] == 'r':
+    mention_tweets = api.mentions()
+    for mtweet in mention_tweets:
+        print mtweet.user.screen_name,":",mtweet.text
+        print ""
+
+elif sys.argv[1] == 'h':
+    friends_tweets = api.home_timeline()
+    for ftweet in friends_tweets:
+        print ftweet.user.screen_name,":", ftweet.text
+        print ""</pre>
+<p>Hope you like it :)</p>
