@@ -7,6 +7,7 @@ parent_id: '0'
 published: true
 password: ''
 status: publish
+comments: true
 categories:
 - Amazon Web Services
 - This Week I Learned
