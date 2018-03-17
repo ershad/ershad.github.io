@@ -24,7 +24,7 @@ task :post do
     categories:
     tags:
     description:
-    author_github: #{author}
+    author: #{author}
     ---
 
     EOS

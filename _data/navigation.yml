@@ -1,9 +1,9 @@
 # main links
 main:
-  - title: "Talks"
-    url: /talks
   - title: "About"
     url: /about
+  - title: "Talks"
+    url: /talks
   - title: "This Week I Learned"
     url: /this-week-i-learned
   - title: "Subscribe"
