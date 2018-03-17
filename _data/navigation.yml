@@ -1,12 +1,10 @@
 # main links
 main:
-  - title: "Quick-Start Guide"
-    url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
-  # - title: "About"
-  #   url: https://mmistakes.github.io/minimal-mistakes/about/
-  # - title: "Sample Posts"
-  #   url: /year-archive/
-  # - title: "Sample Collections"
-  #   url: /collection-archive/
+  - title: "Talks"
+    url: /talks
+  - title: "About"
+    url: /about
+  - title: "Subscribe"
+    url: https://feedburner.google.com/fb/a/mailverify?uri=ershadk
   # - title: "Sitemap"
   #   url: /sitemap/
