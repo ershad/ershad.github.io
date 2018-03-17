@@ -19,7 +19,7 @@ tags:
 meta:
   _edit_last: '1'
 ---
-I'm starting a new blog series named [This Week I Learned](http://blog.ershadk.com/categories/#this-week-i-learned/). I will try to blog the new things I learn every week. Hope it would be helpful to someone.
+I'm starting a new blog series named [This Week I Learned](http://ershadk.com/blog/categories/this-week-i-learned/). I will try to blog the new things I learn every week. Hope it would be helpful to someone.
 
 Recently we had an outage in a high-traffic site I was working for. The culprit turned out to be a memory issue with Redis, caused by a short DDoS attack. The memory was fully used and Unicorn/Resque workers weren't able to read or write to the cache. As a result, we had an increased level of 5xx responses and background jobs stopped working. Our error tracker was filled with the following error.
 
