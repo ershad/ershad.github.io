@@ -5,7 +5,7 @@ main:
   - title: "About"
     url: /about
   - title: "This Week I Learned"
-    url: /categories/this-week-i-learned/
+    url: /categories/#this-week-i-learned
   - title: "Subscribe"
     url: https://feedburner.google.com/fb/a/mailverify?uri=ershadk
     target: '_blank'
