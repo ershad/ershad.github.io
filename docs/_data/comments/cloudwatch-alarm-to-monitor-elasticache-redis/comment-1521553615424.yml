@@ -1,0 +1,10 @@
+_id: 26aede00-2c45-11e8-9bb2-7f618526731d
+message: >-
+  Even without a DDOS attack or any abnormal condition, Redis could trigger
+  evictions right, if it runs out of memory, to create space based on LIFO? so
+  if threshold is set as 0, wouldn't it trigger false alarms?
+name: Unnikrishnan KP
+email: beada4200408a4bfa7750b4c84e518d4
+url: ''
+hidden: ''
+date: '2018-03-20T13:46:55.413Z'
