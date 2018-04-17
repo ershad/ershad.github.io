@@ -1,11 +1,11 @@
 # main links
+#- title: "This Week I Learned"
+#  url: /this-week-i-learned
 main:
   - title: "About"
     url: /about
   - title: "Talks"
     url: /talks
-  - title: "This Week I Learned"
-    url: /this-week-i-learned
   - title: "Subscribe"
     url: https://feedburner.google.com/fb/a/mailverify?uri=ershadk
     target: '_blank'
