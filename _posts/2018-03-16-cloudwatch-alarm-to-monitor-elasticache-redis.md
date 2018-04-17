@@ -4,7 +4,7 @@ title: CloudWatch alarm to monitor Elasticache Redis
 date: 2018-03-16 14:10:29.000000000 +05:30
 type: post
 parent_id: '0'
-published: true
+published: false
 password: ''
 status: publish
 comments: true
