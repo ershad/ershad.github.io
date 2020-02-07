@@ -27,7 +27,7 @@ teaser                   : # path of fallback teaser image, e.g. "/assets/images
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
 comments:
-  provider               : staticman_v2
+  provider               :
   disqus:
     shortname            : # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
   discourse:
@@ -61,7 +61,7 @@ naver_site_verification  :
 
 # Social Sharing
 twitter:
-  username               :
+  username               : ershus
 facebook:
   username               :
   app_id                 :
@@ -83,17 +83,17 @@ analytics:
 
 # Site Author
 author:
-  name             : ""
+  name             :
   avatar           : "/assets/images/ershad.jpg"
-  bio              : "I like building things, computers and programming."
-  location         : "Malappuram, Kerala"
-  email            : "ershad92@gmail.com"
+  bio              : "Hey! I'm Ershad. Welcome to my blog. I like to write about programming and technology."
+  location         :
+  email            :
   uri              :
   home             : # null (default), "absolute or relative url to link to author home"
   bitbucket        :
   codepen          :
   dribbble         :
-  flickr           :
+  flickr           : "ershad_k"
   facebook         :
   foursquare       :
   github           : "ershad"
@@ -248,10 +248,10 @@ defaults:
       type: posts
     values:
       layout: single
-      author_profile: true
-      read_time: true
-      comments: true
-      share: true
+      author_profile: false
+      read_time: false
+      comments: false
+      share: false
       related: true
 
   # _pages
