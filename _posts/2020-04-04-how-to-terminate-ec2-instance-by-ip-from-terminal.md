@@ -7,7 +7,7 @@ comments: true
 status: publish
 author: ershad
 ---
-Here's an easy command line shortcut to terminate an [AWS EC2](https://aws.amazon.com/ec2/) instance if you know the private IP address but not the instance ID.
+Here's an quick command line shortcut to terminate an [AWS EC2](https://aws.amazon.com/ec2/) instance if you know the private IP address but not the instance ID.
 
 {% highlight bash %}
 # Function to terminate EC2 instance by IP
