@@ -17,7 +17,10 @@ function terminate_instance(){
 }
 
 # Usage
-terminate_instance 10.0.32.64
+# $ terminate_instance <private IP address>
+
+# Example
+# $ terminate_instance 10.0.32.64
 {% endhighlight %}
 
 This shortcut often saves me a visit to the EC2 Dashboard 😄
