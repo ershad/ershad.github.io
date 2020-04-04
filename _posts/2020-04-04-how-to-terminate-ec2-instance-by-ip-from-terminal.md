@@ -23,4 +23,4 @@ function terminate_instance(){
 # $ terminate_instance 10.0.32.64
 {% endhighlight %}
 
-This shortcut often saves me a visit to the EC2 Dashboard 😄
+This shortcut often saves me visits to the EC2 Dashboard 😄
