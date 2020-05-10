@@ -6,7 +6,8 @@ main:
     url: /about
   - title: "Talks"
     url: /talks
+  - title: "Projects"
+    url: /projects
   - title: "Subscribe"
     url: https://feedburner.google.com/fb/a/mailverify?uri=ershadk
     target: '_blank'
-
