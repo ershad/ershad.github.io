@@ -23,4 +23,4 @@ Found a security bug related to forked private GitHub gists and was awarded $500
 
 **2. [Prezi](https://prezi.com/bugbounty/whitehats)**
 
-Found an exploit using which we could retrieve titles of private presentations. I was awarded $500 for this finding.
+Found a vulnerability using which we could retrieve titles of private presentations. I was awarded $500 for this finding.
