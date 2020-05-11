@@ -19,7 +19,7 @@ BitBar is an opensource macOS utility to put the output of any executable script
 
 **Step 2:** Open its plugin folder.
 
-![BitBar plugin directory](/assets/images/bitbar_plugin_dir.png){: .project-image}
+![BitBar plugin directory](/assets/images/bitbar_plugin_dir.png){: .project-image.align-center}
 
 **Step 3:** Copy this script with file name `check_internet.5s.sh` to the plugin folder.
 
@@ -49,20 +49,20 @@ chmod +x <path to>/check_internet.5s.sh
 
 **Step 5:** Click `Refresh all`
 
-![BitBar Refresh all](/assets/images/bitbar_refresh_all.png){: .project-image}
+![BitBar Refresh all](/assets/images/bitbar_refresh_all.png){: .project-image.align-center}
 
 You are all set! BitBar now checks your internet every 5 seconds and it would show "❎" emoji in the menu bar when your internet isn't working.
 
 
-![BitBar not connected](/assets/images/bitbar_not_connected.png){: .project-image}
+![BitBar not connected](/assets/images/bitbar_not_connected.png){: .project-image.align-center}
 
 When you have a stable internet, it shows a "✔︎".
 
-![BitBar connected](/assets/images/bitbar_connected.png){: .project-image}
+![BitBar connected](/assets/images/bitbar_connected.png){: .project-image.align-center}
 
 It would also show you the latency if it's above 30ms. This information would be useful when you have the internet but the connection isn't stable.
 
 
-![BitBar not connected](/assets/images/bitbar_high_latency.png){: .project-image}
+![BitBar not connected](/assets/images/bitbar_high_latency.png){: .project-image.align-center}
 
 I hope it helped. Thanks for reading. Stay Safe.
