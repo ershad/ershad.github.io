@@ -43,8 +43,6 @@ Grandham is a bibliography data project to index books published in [Malayalam](
 
 ![Grandham](/assets/images/grandham.png){: .project-image}
 
-
-
 **6. QuizGrid**
 
 QuizGrid was a gaming platform to ask/answer general knowledge questions and collect points.
