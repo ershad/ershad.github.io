@@ -87,7 +87,7 @@ author:
   avatar           : "/assets/images/ershad.jpg"
   bio              : "Hey! I'm Ershad. Welcome to my blog. I write about programming and technology."
   location         :
-  email            :
+  email            : "hello@ershadk.com"
   uri              :
   home             : # null (default), "absolute or relative url to link to author home"
   bitbucket        :
