@@ -12,7 +12,11 @@ Here's an quick command line shortcut to terminate an [AWS EC2](https://aws.amaz
 {% highlight bash %}
 # Function to terminate EC2 instance by IP
 function terminate_instance(){
-  instance_id=$(aws ec2 describe-instances --filter Name=private-ip-address,Values=$1 --query "Reservations[].Instances[].[InstanceId]" --output text)
+  instance_id=$(aws ec2 describe-instances            \
+    --filter Name=private-ip-address,Values=$1        \
+    --query "Reservations[].Instances[].[InstanceId]" \
+    --output text)
+
   aws ec2 terminate-instances --instance-ids $instance_id
 }
 
