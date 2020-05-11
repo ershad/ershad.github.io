@@ -41,7 +41,7 @@ else
 fi
 {% endhighlight %}
 
-**Step 4:** Make the script executable.
+**Step 4:** Make the script executable. Run the following command in terminal after replacing `<path to>` with the path of plugin folder.
 
 {% highlight bash %}
 chmod +x <path to>/check_internet.5s.sh
