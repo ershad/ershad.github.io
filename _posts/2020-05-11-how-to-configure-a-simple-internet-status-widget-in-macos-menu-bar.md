@@ -13,7 +13,7 @@ If it's an issue with our internet, we could try switching to a different networ
 
 I had some internet connectivity issues a few months back and faced this problem. Each time when I couldn't hear the other person speaking I wondered if it was an issue with my internet. During those times I used `ping` command or refreshed pages in the browser to check the status of my connection. I wanted to automate this check and put together a solution using [BitBar](https://getbitbar.com).
 
-BitBar is a macOS utility to put the output of any executable script in the Mac menu bar. I wrote a small script to periodically check the internet connection and show an emoji (or latency) when the connection isn't stable. Here are the steps to configure it.
+BitBar is an opensource macOS utility to put the output of any executable script in the Mac menu bar. I wrote a small script to periodically check the internet connection and show an emoji (or latency) when the connection isn't stable. Here are the steps to configure it.
 
 **Step 1:** Download, install and run [BitBar](https://getbitbar.com).
 
