@@ -56,33 +56,75 @@ $ curl -s https://jsonplaceholder.typicode.com/users
 .....
 {% endhighlight %}
 
-💡 `curl -s` runs `curl` in quiet mode, it won't show the request progress meter.
+💡 `curl -s` runs `curl` in quiet mode, else it shows the request progress meter.
 {: .notice--info}
 
 **1.** Extract the name from the first user.
 
 {% highlight bash %}
 $ curl -s https://jsonplaceholder.typicode.com/users | \
-    jq ".[0] .name"
+    jq '.[0] .name'
 "Leanne Graham"
 {% endhighlight %}
+
+`'.'` refers to the entire JSON object.
+
+`'.[0]'` refers to the first object in the JSON array.
+
+`'.[0] .name'` refers to the `name` attribute in the first object in the JSON array.
 
 We can use `-r` switch in `jq` to remove the quotes from the output.
 
 {% highlight bash %}
 $ curl -s https://jsonplaceholder.typicode.com/users | \
-    jq -r ".[0] .name"
+    jq -r '.[0] .name'
 Leanne Graham
 {% endhighlight %}
 
-**2.** Extract the names of first 5 users.
+**2.** Extract the names of all users.
 
 {% highlight bash %}
 $ curl -s https://jsonplaceholder.typicode.com/users | \
-    jq -r ".[] .name" | head -n5
+    jq -r '.[] .name'
 Leanne Graham
 Ervin Howell
 Clementine Bauch
 Patricia Lebsack
 Chelsey Dietrich
+.....
 {% endhighlight %}
+
+`'.[]'` refers to all objects in the JSON array.
+
+**3.** Extract selected attributes.
+
+{% highlight bash %}
+$ curl -s https://jsonplaceholder.typicode.com/users | \
+    jq '.[0] | { name: .name, city: .address.city}'
+{
+  "name": "Leanne Graham",
+  "city": "Gwenborough"
+}
+{% endhighlight %}
+
+Notice how we extract `city` field using `.address.city` expression. It looks inside `address` object for the `city` attribute of the user.
+
+**4.** Extract selected attributes of all users.
+
+{% highlight bash %}
+$ curl -s https://jsonplaceholder.typicode.com/users | \
+    jq '[.[] | { name: .name, city: .address.city}]'
+[
+  {
+    "name": "Leanne Graham",
+    "city": "Gwenborough"
+  },
+  {
+    "name": "Ervin Howell",
+    "city": "Wisokyburgh"
+  },
+.....
+]
+{% endhighlight %}
+
+Wrapping the expression inside `[]` encloses the result in an array.
