@@ -138,4 +138,4 @@ Leanne Graham
 
 Using `select` function, we can filter through the JSON objects based on a boolean expression. In this example, we are parsing the names of all users with zipcode `92998-3874`.
 
-`jq` is quite useful when we write shell scripts that process JSON data. It has many other features and they all are documented in its [manual](https://stedolan.github.io/jq/manual).
+`jq` is quite useful in shell scripts that process JSON data. It has many other features and they all are documented in its [manual](https://stedolan.github.io/jq/manual).
