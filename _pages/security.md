@@ -17,10 +17,10 @@ meta:
 ---
 This page lists some of my security bug findings.
 
-**1. [GitHub](https://bounty.github.com/researchers/ershad.html)**
+**1. GitHub**
 
-Found a security bug related to forked private GitHub gists and was awarded $500.
+Found a [security bug](https://bounty.github.com/researchers/ershad.html) related to forked private GitHub gists and was awarded a bounty for it.
 
-**2. [Prezi](https://prezi.com/bugbounty/whitehats)**
+**2. Prezi**
 
-Found a vulnerability using which we could retrieve titles of private presentations. I was awarded $500 for this finding.
+Found a vulnerability using which we could retrieve titles of private presentations of other users. Prezi awarded me a bounty for that finding.
