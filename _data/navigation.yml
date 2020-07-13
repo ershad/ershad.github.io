@@ -11,5 +11,4 @@ main:
   - title: "Security"
     url: /security
   - title: "Subscribe"
-    url: https://feedburner.google.com/fb/a/mailverify?uri=ershadk
-    target: '_blank'
+    url: /subscribe
