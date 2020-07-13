@@ -26,6 +26,7 @@ meta:
 <form action="https://ershadk.us18.list-manage.com/subscribe/post?u=5ac8863d3e2270cecbddc262b&amp;id=b579e70991" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
     <div id="mc_embed_signup_scroll">
 	<h2>Subscribe</h2>
+    <p>Fresh posts delivered to your inbox, once in a week.</p>
 <div class="mc-field-group">
 	<label for="mce-EMAIL">Email Address </label>
 	<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
