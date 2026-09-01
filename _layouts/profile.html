@@ -4,6 +4,15 @@
     <meta charset="utf-8">
     {% include seo.html %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+      // Set the theme before first paint. White is the default; the OS preference is
+      // deliberately not consulted, only an explicit choice made with the toggle.
+      (function () {
+        var t = null;
+        try { t = localStorage.getItem('theme'); } catch (e) {}
+        document.documentElement.setAttribute('data-theme', t === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
     <link rel="icon" href="{{ '/favicon.ico' | absolute_url }}">
     <link href="{% if site.atom_feed.path %}{{ site.atom_feed.path }}{% else %}{{ '/feed.xml' | absolute_url }}{% endif %}" type="application/atom+xml" rel="alternate" title="{{ site.title }} Feed">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,20 +33,20 @@
         --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
         --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
         --measure: 50rem;
+        color-scheme: light;
       }
 
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --paper: #100F0D;
-          --paper-sunk: #191713;
-          --ink: #EFEBE3;
-          --ink-2: #B4ABA0;
-          --ink-3: #837A6E;
-          --rule: #2B2823;
-          --rule-soft: #221F1B;
-          --accent: #E28D62;
-          --accent-wash: rgba(226, 141, 98, 0.11);
-        }
+      :root[data-theme="dark"] {
+        --paper: #100F0D;
+        --paper-sunk: #191713;
+        --ink: #EFEBE3;
+        --ink-2: #B4ABA0;
+        --ink-3: #837A6E;
+        --rule: #2B2823;
+        --rule-soft: #221F1B;
+        --accent: #E28D62;
+        --accent-wash: rgba(226, 141, 98, 0.11);
+        color-scheme: dark;
       }
 
       * { box-sizing: border-box; }
@@ -99,6 +108,32 @@
       }
       .masthead nav a { color: var(--ink-3); transition: color .18s ease; }
       .masthead nav a:hover { color: var(--accent); }
+      .masthead__end {
+        display: flex;
+        align-items: center;
+        gap: clamp(.9rem, 2.4vw, 1.6rem);
+        flex-wrap: wrap;
+      }
+      .theme-toggle {
+        appearance: none;
+        -webkit-appearance: none;
+        flex: 0 0 auto;
+        width: 30px;
+        height: 30px;
+        padding: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: none;
+        border: 1px solid var(--rule);
+        border-radius: 999px;
+        color: var(--ink-3);
+        cursor: pointer;
+        transition: color .18s ease, border-color .18s ease, background .18s ease;
+      }
+      .theme-toggle:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-wash); }
+      .theme-toggle svg { width: 14px; height: 14px; display: block; }
+      .theme-toggle svg[hidden] { display: none; }
 
       /* ---------- intro ---------- */
       .intro {
@@ -291,13 +326,36 @@
 
       @media print {
         :root { --paper: #fff; --ink: #000; --ink-2: #222; --ink-3: #555; --rule: #ccc; --accent: #000; }
-        .masthead nav, .actions, .foot { display: none; }
+        .masthead nav, .theme-toggle, .actions, .foot { display: none; }
         .row { break-inside: avoid; page-break-inside: avoid; }
       }
     </style>
   </head>
   <body>
     {{ content }}
+    <script>
+      (function () {
+        var root = document.documentElement;
+        var btn = document.getElementById('theme-toggle');
+        if (!btn) return;
+        var sun = btn.querySelector('.icon-sun');
+        var moon = btn.querySelector('.icon-moon');
+        function sync() {
+          var dark = root.getAttribute('data-theme') === 'dark';
+          sun.hidden = !dark;
+          moon.hidden = dark;
+          btn.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+          btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
+        }
+        btn.addEventListener('click', function () {
+          var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          root.setAttribute('data-theme', next);
+          try { localStorage.setItem('theme', next); } catch (e) {}
+          sync();
+        });
+        sync();
+      })();
+    </script>
     {% include analytics.html %}
   </body>
 </html>
