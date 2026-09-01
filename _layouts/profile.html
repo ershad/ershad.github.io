@@ -11,6 +11,9 @@
         var t = null;
         try { t = localStorage.getItem('theme'); } catch (e) {}
         document.documentElement.setAttribute('data-theme', t === 'dark' ? 'dark' : 'light');
+        // Marks JS as available: the mobile nav starts collapsed only then, so a
+        // no-JS visitor keeps a plain, always-visible list of links.
+        document.documentElement.setAttribute('data-nav', 'closed');
       })();
     </script>
     <link rel="icon" href="{{ '/favicon.ico' | absolute_url }}">
@@ -86,7 +89,6 @@
       .masthead {
         display: flex;
         align-items: center;
-        justify-content: space-between;
         gap: 1.5rem;
         flex-wrap: wrap;
         padding: 1.75rem 0 1.5rem;
@@ -102,19 +104,20 @@
         display: flex;
         gap: clamp(.9rem, 2.4vw, 1.6rem);
         flex-wrap: wrap;
+        margin-left: auto;
         font-family: var(--mono);
         font-size: .75rem;
         letter-spacing: .04em;
       }
       .masthead nav a { color: var(--ink-3); transition: color .18s ease; }
       .masthead nav a:hover { color: var(--accent); }
-      .masthead__end {
+      .masthead__buttons {
         display: flex;
         align-items: center;
-        gap: clamp(.9rem, 2.4vw, 1.6rem);
-        flex-wrap: wrap;
+        gap: .5rem;
+        flex: 0 0 auto;
       }
-      .theme-toggle {
+      .icon-btn {
         appearance: none;
         -webkit-appearance: none;
         flex: 0 0 auto;
@@ -131,12 +134,16 @@
         cursor: pointer;
         transition: color .18s ease, border-color .18s ease, background .18s ease;
       }
-      .theme-toggle:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-wash); }
-      .theme-toggle svg { width: 14px; height: 14px; display: block; }
-      /* The icon follows the theme in CSS, so it is right on the first paint. */
+      .icon-btn:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-wash); }
+      .icon-btn svg { width: 14px; height: 14px; display: block; }
+      /* Icons follow state in CSS, so they are right on the first paint. */
       .theme-toggle .icon-sun { display: none; }
       :root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
       :root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+      .nav-toggle { display: none; }
+      .nav-toggle .icon-close { display: none; }
+      :root[data-nav="open"] .nav-toggle .icon-burger { display: none; }
+      :root[data-nav="open"] .nav-toggle .icon-close { display: block; }
 
       /* ---------- intro ---------- */
       .intro {
@@ -315,6 +322,33 @@
       .foot a:hover { color: var(--accent); }
 
       /* ---------- responsive ---------- */
+      @media (max-width: 36rem) {
+        .nav-toggle { display: inline-flex; }
+        .icon-btn { width: 38px; height: 38px; }
+        .icon-btn svg { width: 16px; height: 16px; }
+        .masthead { gap: .75rem 1rem; padding-bottom: 1.1rem; }
+        .masthead__buttons { margin-left: auto; gap: .55rem; }
+        .masthead nav {
+          order: 3;
+          flex-basis: 100%;
+          margin-left: 0;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+          font-size: .82rem;
+          border-top: 1px solid var(--rule);
+          margin-top: .35rem;
+        }
+        .masthead nav a {
+          padding: .72rem .1rem;
+          border-bottom: 1px solid var(--rule-soft);
+        }
+        .masthead nav a:last-child { border-bottom: 0; }
+        /* Collapsed only when JS set data-nav; otherwise the list stays visible. */
+        :root[data-nav] .masthead nav { display: none; }
+        :root[data-nav="open"] .masthead nav { display: flex; }
+      }
+
       @media (max-width: 44rem) {
         .row { grid-template-columns: 1fr; gap: .85rem 0; padding: 2.1rem 0; }
         .row__label { margin: 0; }
@@ -329,7 +363,7 @@
 
       @media print {
         :root { --paper: #fff; --ink: #000; --ink-2: #222; --ink-3: #555; --rule: #ccc; --accent: #000; }
-        .masthead nav, .theme-toggle, .actions, .foot { display: none; }
+        .masthead nav, .masthead__buttons, .actions, .foot { display: none; }
         .row { break-inside: avoid; page-break-inside: avoid; }
       }
     </style>
@@ -353,6 +387,28 @@
           sync();
         });
         sync();
+      })();
+    </script>
+    <script>
+      (function () {
+        var root = document.documentElement;
+        var btn = document.getElementById('nav-toggle');
+        if (!btn) return;
+        function set(open) {
+          root.setAttribute('data-nav', open ? 'open' : 'closed');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+          btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        }
+        btn.addEventListener('click', function () {
+          set(root.getAttribute('data-nav') !== 'open');
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && root.getAttribute('data-nav') === 'open') {
+            set(false);
+            btn.focus();
+          }
+        });
+        set(false);
       })();
     </script>
     {% include analytics.html %}
