@@ -84,7 +84,7 @@ analytics:
 # Site Author
 author:
   name             :
-  avatar           : "/assets/images/ershad.jpg"
+  avatar           : "/assets/images/ershad-avatar.jpg"
   bio              : "Hey! I'm Ershad. Welcome to my blog. I write about programming and technology."
   location         :
   email            :
@@ -182,7 +182,7 @@ sass:
 # Outputting
 permalink: :year/:month/:day/:title:output_ext
 paginate: 10 # amount of posts to show
-paginate_path: /page/:num/
+paginate_path: /blog/page/:num/
 timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 

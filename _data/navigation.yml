@@ -2,6 +2,8 @@
 #- title: "This Week I Learned"
 #  url: /this-week-i-learned
 main:
+  - title: "Blog"
+    url: /blog/
   - title: "About"
     url: /about
   - title: "Talks"

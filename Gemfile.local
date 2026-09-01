@@ -1,0 +1,7 @@
+# Local-preview Gemfile: same deps as ./Gemfile, but pins ffi to a version
+# that still supports the Ruby this old Jekyll (~> 3.6) needs.
+# Usage: RBENV_VERSION=2.7.3 BUNDLE_GEMFILE=Gemfile.local bundle exec jekyll serve
+source "https://rubygems.org"
+gemspec
+gem "kramdown-parser-gfm"
+gem "ffi", "~> 1.15.5"
