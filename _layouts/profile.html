@@ -133,7 +133,10 @@
       }
       .theme-toggle:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-wash); }
       .theme-toggle svg { width: 14px; height: 14px; display: block; }
-      .theme-toggle svg[hidden] { display: none; }
+      /* The icon follows the theme in CSS, so it is right on the first paint. */
+      .theme-toggle .icon-sun { display: none; }
+      :root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+      :root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
 
       /* ---------- intro ---------- */
       .intro {
@@ -338,12 +341,8 @@
         var root = document.documentElement;
         var btn = document.getElementById('theme-toggle');
         if (!btn) return;
-        var sun = btn.querySelector('.icon-sun');
-        var moon = btn.querySelector('.icon-moon');
         function sync() {
           var dark = root.getAttribute('data-theme') === 'dark';
-          sun.hidden = !dark;
-          moon.hidden = dark;
           btn.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
           btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
         }
