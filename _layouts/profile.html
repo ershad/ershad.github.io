@@ -304,10 +304,60 @@
       .elsewhere a { border-bottom: 1px solid var(--rule); justify-self: start; }
       .elsewhere a:hover { color: var(--accent); border-bottom-color: var(--accent); }
 
+      /* ---------- interior pages ---------- */
+      .masthead nav a[aria-current="page"] { color: var(--ink); }
+
+      .page-head { padding: clamp(2rem, 5.5vw, 3.5rem) 0 1.75rem; }
+      .page-title {
+        font-family: var(--serif);
+        font-weight: 400;
+        font-size: clamp(1.95rem, 5.4vw, 2.7rem);
+        line-height: 1.08;
+        letter-spacing: -.016em;
+        color: var(--ink);
+        margin: 0 0 .65rem;
+      }
+      .page-lede {
+        font-family: var(--serif);
+        font-size: clamp(1.06rem, 2.1vw, 1.2rem);
+        line-height: 1.6;
+        color: var(--ink);
+        margin: 0;
+        max-width: 58ch;
+      }
+
+      /* a dated entry: mono date column, description beside it */
+      .entry {
+        display: grid;
+        grid-template-columns: 10rem 1fr;
+        gap: 0 1.5rem;
+        padding: 0 0 1.15rem;
+      }
+      .entry:last-child { padding-bottom: 0; }
+      .entry__date {
+        font-family: var(--mono);
+        font-size: .74rem;
+        line-height: 1.75;
+        letter-spacing: .01em;
+        color: var(--ink-3);
+        padding-top: .18rem;
+        font-variant-numeric: tabular-nums;
+      }
+      .entry__what {
+        font-family: var(--serif);
+        font-size: 1.08rem;
+        line-height: 1.45;
+        color: var(--ink);
+        margin: 0;
+      }
+      .entry__where { font-size: .9rem; color: var(--ink-3); margin: .12rem 0 0; }
+      .entry__where a { color: var(--ink-3); border-bottom: 1px solid var(--rule); }
+      .entry__where a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
       /* ---------- footer ---------- */
       .foot {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: baseline;
         gap: 1rem;
         flex-wrap: wrap;
@@ -354,6 +404,8 @@
         .row__label { margin: 0; }
         .job { grid-template-columns: 1fr; gap: .1rem; }
         .job__years { padding-top: 0; }
+        .entry { grid-template-columns: 1fr; gap: .15rem; padding-bottom: 1.35rem; }
+        .entry__date { padding-top: 0; }
         .elsewhere > li { grid-template-columns: 4.5rem 1fr; gap: .9rem; }
       }
       @media (max-width: 30rem) {
