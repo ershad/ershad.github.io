@@ -17,7 +17,12 @@
       })();
     </script>
     <link rel="icon" href="{{ '/favicon.ico' | absolute_url }}">
+    {% if page.feed_path %}
+    <link href="{{ page.feed_path | absolute_url }}" type="application/rss+xml" rel="alternate" title="{{ site.title }} — Writing">
+    {% else %}
     <link href="{% if site.atom_feed.path %}{{ site.atom_feed.path }}{% else %}{{ '/feed.xml' | absolute_url }}{% endif %}" type="application/atom+xml" rel="alternate" title="{{ site.title }} Feed">
+    {% endif %}
+    {% if page.feed_path %}<link rel="stylesheet" href="{{ '/assets/css/writing.css' | relative_url }}">{% endif %}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">

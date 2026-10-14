@@ -1,0 +1,19 @@
+---
+layout: profile-page
+title: Writing
+lede: Notes on building software, small discoveries, and things worth sharing.
+description: Notes and essays by Ershad Kunnakkadan.
+permalink: /posts/
+feed_path: /posts/feed.xml
+---
+<main class="writing-index">
+  {% assign articles = site.writing | sort: 'date' | reverse %}
+  {% for post in articles %}
+  <article class="writing-preview">
+    <p class="writing-meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>{% if post.sample %} · Sample post{% endif %}</p>
+    <h2><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h2>
+    <p>{{ post.description | escape }}</p>
+    <a class="writing-read" href="{{ post.url | relative_url }}">Read post →</a>
+  </article>
+  {% endfor %}
+</main>

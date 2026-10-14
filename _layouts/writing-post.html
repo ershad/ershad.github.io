@@ -1,0 +1,19 @@
+---
+layout: profile
+---
+<div class="shell">
+  {% include profile-masthead.html %}
+  <main class="writing">
+    <header class="page-head">
+      <a class="writing-back" href="{{ '/posts/' | relative_url }}">← All writing</a>
+      <p class="writing-meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>{% if page.sample %} · Sample post{% endif %}</p>
+      <h1 class="page-title">{{ page.title | escape }}</h1>
+      {% if page.lede %}<p class="page-lede">{{ page.lede | escape }}</p>{% endif %}
+    </header>
+    <article class="writing-body">{{ content }}</article>
+    <nav class="writing-bottom" aria-label="Writing navigation">
+      <a href="{{ '/posts/' | relative_url }}">← All writing</a>
+    </nav>
+  </main>
+  {% include profile-footer.html %}
+</div>

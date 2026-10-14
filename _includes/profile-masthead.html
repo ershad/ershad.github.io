@@ -1,6 +1,7 @@
 <header class="masthead">
     {% if page.url != '/' %}<a class="monogram" href="{{ '/' | relative_url }}">Ershad&nbsp;Kunnakkadan</a>{% endif %}
     <nav id="site-nav">
+      <a href="{{ '/posts/' | relative_url }}"{% if page.url contains '/posts/' %} aria-current="page"{% endif %}>Writing</a>
       <a href="{{ '/security' | relative_url }}"{% if page.url == '/security' %} aria-current="page"{% endif %}>Security</a>
       <a href="{{ '/talks' | relative_url }}"{% if page.url == '/talks' %} aria-current="page"{% endif %}>Talks</a>
       <a href="{{ '/ershadk_resume.pdf' | relative_url }}">Résumé</a>

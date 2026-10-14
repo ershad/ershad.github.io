@@ -180,6 +180,11 @@ sass:
 
 
 # Outputting
+collections:
+  writing:
+    output: true
+    permalink: /posts/:name/
+
 permalink: /blog/:year/:month/:day/:title:output_ext
 paginate: 10 # amount of posts to show
 paginate_path: /blog/page/:num/
@@ -242,6 +247,14 @@ compress_html:
 
 # Defaults
 defaults:
+  - scope:
+      path: ""
+      type: writing
+    values:
+      layout: writing-post
+      comments: false
+      feed_path: /posts/feed.xml
+
   # _posts
   - scope:
       path: ""

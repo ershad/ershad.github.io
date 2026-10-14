@@ -1,0 +1,34 @@
+.writing { max-width: 42rem; margin: 0 auto; }
+.writing-back, .writing-meta, .writing-read, .writing-bottom {
+  font-family: var(--mono); font-size: .74rem; letter-spacing: .02em;
+}
+.writing-back { color: var(--ink-3); }
+.writing-meta { color: var(--ink-3); margin: 1.6rem 0 .8rem; }
+.writing .page-title { margin-bottom: 1rem; }
+.writing-body { font-size: 1rem; line-height: 1.85; padding-bottom: 2rem; }
+.writing-body > :first-child { margin-top: 0; }
+.writing-body h2, .writing-body h3, .writing-preview h2 {
+  font-family: var(--serif); font-weight: 500; color: var(--ink); line-height: 1.25;
+}
+.writing-body h2 { font-size: 1.65rem; margin: 2.5rem 0 1rem; }
+.writing-body h3 { font-size: 1.3rem; margin: 2rem 0 .75rem; }
+.writing-body p { margin: 0 0 1.3rem; }
+.writing-body figure { margin: 2rem 0; }
+.writing-body img, .writing-body video { display: block; width: 100%; height: auto; border-radius: 3px; }
+.writing-body figcaption { font-size: .78rem; line-height: 1.6; color: var(--ink-3); margin-top: .65rem; }
+.writing-body blockquote { margin: 1.8rem 0; padding: .6rem 1.25rem; border-left: 2px solid var(--accent); background: var(--accent-wash); }
+.writing-body blockquote p:last-child { margin-bottom: 0; }
+.writing-body pre { overflow-x: auto; padding: 1.1rem; background: var(--paper-sunk); border: 1px solid var(--rule); border-radius: 3px; line-height: 1.6; }
+.writing-body code { font-family: var(--mono); font-size: .84em; overflow-wrap: anywhere; }
+.writing-body :not(pre) > code { background: var(--paper-sunk); padding: .15em .3em; }
+.writing-body .twitter-tweet { margin-left: auto; margin-right: auto; }
+.writing-body iframe { max-width: 100%; }
+.writing-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .8rem 1.5rem; }
+.writing-bottom a, .writing-read { color: var(--ink-3); }
+.writing-bottom a:hover, .writing-back:hover, .writing-read:hover, .writing-preview h2 a:hover { color: var(--accent); }
+.writing-preview { padding: 2rem 0; border-top: 1px solid var(--rule); }
+.writing-preview .writing-meta { margin: 0 0 .7rem; }
+.writing-preview h2 { font-size: 1.75rem; margin: 0 0 .7rem; }
+.writing-preview > p:not(.writing-meta) { max-width: 60ch; margin: 0 0 1rem; }
+.writing-index { padding-bottom: 2rem; }
+.writing-bottom { padding: 1.5rem 0 2.5rem; border-top: 1px solid var(--rule); }
