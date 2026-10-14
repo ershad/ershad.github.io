@@ -183,7 +183,7 @@ sass:
 collections:
   writing:
     output: true
-    permalink: /posts/:name
+    permalink: /posts/:year/:month/:day/:name
 
 permalink: /blog/:year/:month/:day/:title:output_ext
 paginate: 10 # amount of posts to show
